@@ -1,0 +1,92 @@
+{
+  "name": "reveal-in-iterm2",
+  "displayName": "Reveal in iTerm2",
+  "description": "Reveal folders in iTerm2 from VS Code explorer or editor",
+  "version": "1.0.0",
+  "publisher": "TypoStudio",
+  "author": {
+    "name": "TypoStudio",
+    "email": "typ0s2d10@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TypoStudio/reveal-in-iterm2"
+  },
+  "bugs": {
+    "url": "https://github.com/TypoStudio/reveal-in-iterm2/issues"
+  },
+  "homepage": "https://github.com/TypoStudio/reveal-in-iterm2#readme",
+  "keywords": [
+    "iterm",
+    "iterm2",
+    "terminal",
+    "macos",
+    "reveal",
+    "open"
+  ],
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "reveal-in-iterm2.openFolder",
+        "title": "Reveal in iTerm2"
+      },
+      {
+        "command": "reveal-in-iterm2.openCurrentFileFolder",
+        "title": "Reveal in iTerm2"
+      },
+      {
+        "command": "reveal-in-iterm2.openWorkspaceRoot",
+        "title": "Reveal Workspace Root in iTerm2"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "reveal-in-iterm2.openFolder",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@20"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "reveal-in-iterm2.openCurrentFileFolder",
+          "group": "2_files@99"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "reveal-in-iterm2.openCurrentFileFolder",
+          "when": "editorIsOpen"
+        },
+        {
+          "command": "reveal-in-iterm2.openFolder",
+          "when": "false"
+        },
+        {
+          "command": "reveal-in-iterm2.openWorkspaceRoot",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.0.0"
+  }
+}
